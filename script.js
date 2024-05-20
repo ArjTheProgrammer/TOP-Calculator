@@ -15,4 +15,6 @@ function divide(a, b){
     return a / b;
 }
 
-console.log(divide(12,2));
+let firstNum = '';
+let operator = '';
+let secondNum = '';
