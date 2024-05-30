@@ -18,6 +18,7 @@ function divide(a, b){
 let firstNum = '';
 let operator = '';
 let secondNum = '';
+let displayValue = "";
 
 function operate(operator, firstNum, secondNum){
     switch(operator){
@@ -32,3 +33,14 @@ function operate(operator, firstNum, secondNum){
     }
 }
 
+const displayContainer = document.querySelector(".display");
+const buttons = document.querySelectorAll("button")
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => display(button))
+});
+
+function display(button){
+        displayValue += button.value;
+        displayContainer.textContent = displayValue;    
+}
