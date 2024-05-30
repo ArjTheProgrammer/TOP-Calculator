@@ -32,4 +32,3 @@ function operate(operator, firstNum, secondNum){
     }
 }
 
-console.log(operate('-', 12, 2));

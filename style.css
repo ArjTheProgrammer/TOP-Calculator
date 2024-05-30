@@ -1,0 +1,41 @@
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+
+.calculator {
+  background-color: black;
+  height: 550px;
+  width: 400px;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 10px;
+}
+
+.display {
+  background-color: white;
+  height: 50px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.button-container {
+  margin: 30px 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button-container > button {
+  background-color: bisque;
+  height: 90px;
+  font-size: larger;
+  border-radius: 10px;
+}
+
+.button-container > button:hover {
+  background-color: rgb(179, 133, 77);
+}
