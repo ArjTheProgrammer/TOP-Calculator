@@ -37,10 +37,23 @@ const displayContainer = document.querySelector(".display");
 const buttons = document.querySelectorAll("button")
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => display(button))
+        button.addEventListener('click', () => display(button));
 });
 
 function display(button){
         displayValue += button.value;
+        if (operator == "" && button.className == "number"){
+            firstNum += button.value;
+            console.log(`first num value ${firstNum}`)
+        }
+        if (button.className == "operator"){
+            operator = button.value;
+            console.log(`operator clicked ${operator}`)
+        }
+
+    if (operator != '' && button.className == "number"){
+        secondNum += button.value;
+        console.log(`second num value ${secondNum}`)
+    }
         displayContainer.textContent = displayValue;    
 }
