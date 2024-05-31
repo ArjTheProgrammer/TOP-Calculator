@@ -18,6 +18,7 @@ function divide(a, b){
 let firstNum = '';
 let operator = '';
 let secondNum = '';
+let answer='';
 let displayValue = "";
 
 function operate(operator, firstNum, secondNum){
@@ -41,19 +42,34 @@ buttons.forEach(button => {
 });
 
 function display(button){
-        displayValue += button.value;
+        if (button.value == 'c'){
+            clear();
+        }
         if (operator == "" && button.className == "number"){
             firstNum += button.value;
+            displayValue += button.value;
             console.log(`first num value ${firstNum}`)
         }
         if (button.className == "operator"){
             operator = button.value;
+            displayValue += button.value;
             console.log(`operator clicked ${operator}`)
         }
 
-    if (operator != '' && button.className == "number"){
+        if (operator != '' && button.className == "number"){
         secondNum += button.value;
+        displayValue += button.value;
         console.log(`second num value ${secondNum}`)
-    }
+        }
+
         displayContainer.textContent = displayValue;    
+}
+
+function clear(){
+    firstNum = '';
+    operator = '';
+    secondNum = '';
+    answer='';
+    displayValue = "";
+    console.log("cleared");
 }
