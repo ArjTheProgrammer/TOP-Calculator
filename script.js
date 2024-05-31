@@ -50,7 +50,7 @@ function display(button){
             displayValue += button.value;
             console.log(`first num value ${firstNum}`)
         }
-        if (button.className == "operator"){
+        if (button.className == "operator" && operator === ''){
             operator = button.value;
             displayValue += button.value;
             console.log(`operator clicked ${operator}`)
@@ -62,14 +62,47 @@ function display(button){
         console.log(`second num value ${secondNum}`)
         }
 
+        if(button.className == 'operator' && 
+        (firstNum != '' && secondNum != '' && operator !='') ||
+        button.className == 'equal' && (firstNum != '' && secondNum != '' && operator !='')
+        ){
+            let parsedFirstNum = parseInt(firstNum);
+            let parsedSecondNum = parseInt(secondNum);
+
+            if (button.className == 'operator'){
+                answer = operate(operator, parsedFirstNum, parsedSecondNum);
+                firstNum = answer;
+                answer = '';
+                secondNum = '';
+                operator = button.value;
+                displayValue = `${firstNum} ${operator}`;
+            }
+
+            if (button.className == 'equal'){
+                answer = operate(operator, parsedFirstNum, parsedSecondNum);
+                firstNum = answer;
+                answer = '';
+                displayValue = `${firstNum}`;
+                console.log(`answer: ${firstNum}`);
+                operator = '';
+                secondNum = '';
+            }
+            console.log('------------------')
+            console.log(`firstNum: ${firstNum}`);
+            console.log(`operator: ${operator}`);
+            console.log(`secondNum: ${secondNum}`);
+        }
+
         displayContainer.textContent = displayValue;    
 }
 
 function clear(){
-    firstNum = '';
-    operator = '';
-    secondNum = '';
-    answer='';
-    displayValue = "";
-    console.log("cleared");
+    if(firstNum != '' || secondNum != '' || operator !='' || answer != ""){
+        firstNum = '';
+        operator = '';
+        secondNum = '';
+        answer='';
+        displayValue = "";
+        console.log("cleared");
+    }
 }
