@@ -36,6 +36,8 @@ function operate(operator, firstNum, secondNum){
 
 const displayContainer = document.querySelector(".display");
 const buttons = document.querySelectorAll("button")
+const dot = document.getElementById('dot');
+dot.disabled = false;
 
 buttons.forEach(button => {
         button.addEventListener('click', () => display(button));
@@ -46,6 +48,10 @@ function display(button){
             clear();
         }
         if (operator == "" && button.className == "number"){
+            if (button.value === '.'){
+                firstNum += button.value;
+                dot.disabled = true;
+            }
             firstNum += button.value;
             displayValue += button.value;
             console.log(`first num value ${firstNum}`)
@@ -53,19 +59,25 @@ function display(button){
         if (button.className == "operator" && operator === ''){
             operator = button.value;
             displayValue += button.value;
+            dot.disabled = false;
             console.log(`operator clicked ${operator}`)
         }
 
         if (operator != '' && button.className == "number"){
-        secondNum += button.value;
-        displayValue += button.value;
-        console.log(`second num value ${secondNum}`)
+            if (button.value === '.'){
+                firstNum += button.value;
+                dot.disabled = true;
+            }
+            secondNum += button.value;
+            displayValue += button.value;
+            console.log(`second num value ${secondNum}`)
         }
 
         if(button.className == 'operator' && 
         (firstNum != '' && secondNum != '' && operator !='') ||
         button.className == 'equal' && (firstNum != '' && secondNum != '' && operator !='')
         ){
+            dot.disabled = false;
             let parsedFirstNum = parseInt(firstNum);
             let parsedSecondNum = parseInt(secondNum);
 
