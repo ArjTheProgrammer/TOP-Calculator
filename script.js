@@ -86,7 +86,7 @@ function display(button){
             if (button.className == 'operator'){
                 answer = `${operate(operator, parsedFirstNum, parsedSecondNum)}`;
                 if (answer.includes('.')){
-                    answer = Math.round(answer * 100) / 100;
+                    answer = `${Math.round(answer * 100) / 100}`;
                 }
                 firstNum = answer;
                 answer = '';
@@ -98,7 +98,7 @@ function display(button){
             if (button.className == 'equal'){
                 answer = `${operate(operator, parsedFirstNum, parsedSecondNum)}`;
                 if (answer.includes('.')){
-                    answer = Math.round(answer * 100) / 100;
+                    answer = `${Math.round(answer * 100) / 100}`;
                 }
 
                 firstNum = answer;
