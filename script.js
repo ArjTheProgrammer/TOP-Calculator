@@ -49,31 +49,10 @@ function display(button){
         }
 
         if (button.value == 'd'){
-            if (!secondNum.includes('.')){
-                dot.disabled = false;
-            }
-            if (secondNum !== ''){
-                secondNum = secondNum.slice(0, -1);
-                console.log(`secondNum: ${secondNum}`);
-                displayValue = displayValue.slice(0, -1);
-            }
-
-            else if (operator !== ''){
-                operator = operator.slice(0, -1);
-                console.log(`operator: ${operator}`);
-                displayValue = displayValue.slice(0, -1);
-            }
-
-            else if (firstNum !== ''){
-                if (!firstNum.includes('.')){
-                    dot.disabled = false;
-                }
-                firstNum = firstNum.slice(0, -1);
-                console.log(`firstNum: ${firstNum}`);
-                displayValue = displayValue.slice(0, -1);
-            }
+            backspace();
         }
 
+        //for the number buttons
         if (operator == "" && button.className == "number"){
             if (button.value === '.'){
                 firstNum += button.value;
@@ -85,6 +64,7 @@ function display(button){
             displayValue += button.value;
             console.log(`first num value ${firstNum}`)
         }
+
         if (button.className == "operator" && operator === ''){
             operator = button.value;
             displayValue += button.value;
@@ -157,5 +137,39 @@ function clear(){
         dot.disabled = false;
         displayValue = "";
         console.log("cleared");
+    }
+}
+
+function backspace(){
+    if (secondNum !== ''){
+        if (secondNum.charAt(secondNum.length - 1) == "."){
+            dot.disabled = false;
+            console.log("dot enabled");
+        }
+
+        secondNum = secondNum.slice(0, -1);
+        console.log(`secondNum: ${secondNum}`);
+        displayValue = displayValue.slice(0, -1);
+
+    }
+
+    else if (operator !== ''){
+        if (firstNum.includes(".")){
+            dot.disabled = true;
+        }
+        operator = operator.slice(0, -1);
+        console.log(`operator: ${operator}`);
+        displayValue = displayValue.slice(0, -1);
+    }
+
+    else if (firstNum !== ''){
+        if (firstNum.charAt(firstNum.length - 1) == "."){
+            dot.disabled = false;
+            console.log("dot enabled");
+        }
+
+        firstNum = firstNum.slice(0, -1);
+        console.log(`firstNum: ${firstNum}`);
+        displayValue = displayValue.slice(0, -1);
     }
 }
