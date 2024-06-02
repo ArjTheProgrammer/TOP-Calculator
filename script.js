@@ -47,6 +47,27 @@ function display(button){
         if (button.value == 'c'){
             clear();
         }
+
+        if (button.value == 'd'){
+            if (secondNum !== ''){
+                secondNum = secondNum.slice(0, -1);
+                console.log(`secondNum: ${secondNum}`);
+                displayValue = displayValue.slice(0, -1);
+            }
+
+            else if (operator !== ''){
+                operator = operator.slice(0, -1);
+                console.log(`operator: ${operator}`);
+                displayValue = displayValue.slice(0, -1);
+            }
+
+            else if (firstNum !== ''){
+                firstNum = firstNum.slice(0, -1);
+                console.log(`firstNum: ${firstNum}`);
+                displayValue = displayValue.slice(0, -1);
+            }
+        }
+
         if (operator == "" && button.className == "number"){
             if (button.value === '.'){
                 firstNum += button.value;
