@@ -52,7 +52,9 @@ function display(button){
                 firstNum += button.value;
                 dot.disabled = true;
             }
-            firstNum += button.value;
+            else {
+                firstNum += button.value;
+            }
             displayValue += button.value;
             console.log(`first num value ${firstNum}`)
         }
@@ -68,7 +70,7 @@ function display(button){
                 firstNum += button.value;
                 dot.disabled = true;
             }
-            secondNum += button.value;
+                secondNum += button.value;
             displayValue += button.value;
             console.log(`second num value ${secondNum}`)
         }
@@ -82,7 +84,10 @@ function display(button){
             let parsedSecondNum = secondNum.includes('.') ? parseFloat(secondNum) : parseInt(secondNum);
 
             if (button.className == 'operator'){
-                answer = operate(operator, parsedFirstNum, parsedSecondNum);
+                answer = `${operate(operator, parsedFirstNum, parsedSecondNum)}`;
+                if (answer.includes('.')){
+                    answer = Math.round(answer * 100) / 100;
+                }
                 firstNum = answer;
                 answer = '';
                 secondNum = '';
@@ -91,8 +96,8 @@ function display(button){
             }
 
             if (button.className == 'equal'){
-                answer = operate(operator, parsedFirstNum, parsedSecondNum);
-                if (answer.includes){
+                answer = `${operate(operator, parsedFirstNum, parsedSecondNum)}`;
+                if (answer.includes('.')){
                     answer = Math.round(answer * 100) / 100;
                 }
 
