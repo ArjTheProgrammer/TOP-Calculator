@@ -49,6 +49,9 @@ function display(button){
         }
 
         if (button.value == 'd'){
+            if (!secondNum.includes('.')){
+                dot.disabled = false;
+            }
             if (secondNum !== ''){
                 secondNum = secondNum.slice(0, -1);
                 console.log(`secondNum: ${secondNum}`);
@@ -62,6 +65,9 @@ function display(button){
             }
 
             else if (firstNum !== ''){
+                if (!firstNum.includes('.')){
+                    dot.disabled = false;
+                }
                 firstNum = firstNum.slice(0, -1);
                 console.log(`firstNum: ${firstNum}`);
                 displayValue = displayValue.slice(0, -1);
@@ -87,11 +93,15 @@ function display(button){
         }
 
         if (operator != '' && button.className == "number"){
+            secondNum.includes('.') ? dot.disabled = true : dot.disabled = false;
+
             if (button.value === '.'){
-                firstNum += button.value;
+                secondNum += button.value;
                 dot.disabled = true;
             }
+            else {
                 secondNum += button.value;
+            }
             displayValue += button.value;
             console.log(`second num value ${secondNum}`)
         }
