@@ -78,8 +78,8 @@ function display(button){
         button.className == 'equal' && (firstNum != '' && secondNum != '' && operator !='')
         ){
             dot.disabled = false;
-            let parsedFirstNum = parseInt(firstNum);
-            let parsedSecondNum = parseInt(secondNum);
+            let parsedFirstNum = firstNum.includes('.') ? parseFloat(firstNum) : parseInt(firstNum);
+            let parsedSecondNum = secondNum.includes('.') ? parseFloat(secondNum) : parseInt(secondNum);
 
             if (button.className == 'operator'){
                 answer = operate(operator, parsedFirstNum, parsedSecondNum);
@@ -92,6 +92,10 @@ function display(button){
 
             if (button.className == 'equal'){
                 answer = operate(operator, parsedFirstNum, parsedSecondNum);
+                if (answer.includes){
+                    answer = Math.round(answer * 100) / 100;
+                }
+
                 firstNum = answer;
                 answer = '';
                 displayValue = `${firstNum}`;
@@ -114,6 +118,7 @@ function clear(){
         operator = '';
         secondNum = '';
         answer='';
+        dot.disabled = false;
         displayValue = "";
         console.log("cleared");
     }
